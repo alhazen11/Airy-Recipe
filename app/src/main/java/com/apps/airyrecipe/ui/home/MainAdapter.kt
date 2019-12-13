@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.apps.airyrecipe.R
 import com.apps.airyrecipe.abstraction.util.ext.load
+import com.apps.airyrecipe.abstraction.utils.ext.hide
 import com.apps.airyrecipe.data.entity.Recipe
 import kotlinx.android.synthetic.main.item_list_recipe.view.*
 
@@ -45,6 +46,9 @@ class MainAdapter(private val repo: List<Recipe>): RecyclerView.Adapter<MainAdap
             desc.text = repo.review
             rating.text = repo.rating
             creator.text = "By: ${repo.creator}"
+            if(repo.rating.toFloat()<4){
+                rating.hide()
+            }
             foto.load(repo.image)
         }
     }
